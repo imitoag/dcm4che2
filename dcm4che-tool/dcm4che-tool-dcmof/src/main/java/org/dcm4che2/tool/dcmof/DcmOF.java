@@ -138,6 +138,10 @@ public class DcmOF {
     private static final String[] NATIVE_LE_TS = { UID.ExplicitVRLittleEndian,
             UID.ImplicitVRLittleEndian };
 
+    Executor getExecutor() {
+        return executor;
+    }
+
     private final Executor executor;
 
     private final Device device;

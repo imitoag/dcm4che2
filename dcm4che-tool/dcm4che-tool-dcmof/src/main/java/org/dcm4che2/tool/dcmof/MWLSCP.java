@@ -66,6 +66,11 @@ public class MWLSCP extends CFindService {
         this.dcmOF = dcmOF;
     }
 
+    public MWLSCP(DcmOF dcmOF) {
+        super(UID.ModalityWorklistInformationModelFIND, dcmOF.getExecutor());
+        this.dcmOF = dcmOF;
+    }
+
     public final void setSource(File source) {
         source.mkdirs();
         this.source = source;
@@ -74,7 +79,7 @@ public class MWLSCP extends CFindService {
     @SuppressWarnings("unused")
     @Override
     protected DimseRSP doCFind(Association as, int pcid, DicomObject cmd,
-            DicomObject keys, DicomObject rsp) throws DicomServiceException {
+            DicomObject keys, DicomObject rsp) {
         return new MultiFindRSP(dcmOF, keys, rsp, source);
     }
 }
